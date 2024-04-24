@@ -56,7 +56,6 @@ app.get("/", async (req, res) => {
         "google.com/ads",
         "google.com/pagead",
         "uploads",
-        
       ];
 
       const isApiRequest =
@@ -71,8 +70,6 @@ app.get("/", async (req, res) => {
   });
 
   await page.goto(req.query.url, { waitUntil: "networkidle2" });
-
-  await new Promise((resolve) => setTimeout(resolve, 5000));
 
   await browser.close();
 
@@ -97,7 +94,6 @@ app.get("/", async (req, res) => {
     if (err) {
       res.status(500).send("Failed to download the file.");
     }
-    // Optionally delete the file locally after sending it
     fs.unlinkSync(filePath);
   });
 });
